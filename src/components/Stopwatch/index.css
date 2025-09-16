@@ -46,3 +46,64 @@
   font-size: 50px;
   padding-top: 20px;
 }
+
+.bg-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+}
+
+.stopwatch-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.title {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timer-icon {
+  width: 30px;
+}
+
+.time-display {
+  font-size: 48px;
+  margin: 20px 0;
+}
+
+.status-text {
+  color: gray;
+  margin-bottom: 15px;
+}
+
+.buttons .btn {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.green { background: #28a745; }
+.red { background: #dc3545; }
+.yellow { background: #ffc107; color: #000; }
