@@ -1,4 +1,3 @@
-// Write your code here
 import {Component} from 'react'
 import './index.css'
 
@@ -9,28 +8,28 @@ class Stopwatch extends Component {
     clearInterval(this.timerId)
   }
 
-  startbtn = () => {
+  startTimer = () => {
     const {isTimeRunning} = this.state
     if (!isTimeRunning) {
       this.timerId = setInterval(() => {
-        this.setState(prevs => ({timer: prevs.timer + 1}))
+        this.setState(prev => ({timer: prev.timer + 1}))
       }, 1000)
       this.setState({isTimeRunning: true})
     }
   }
 
-  stopbtn = () => {
+  stopTimer = () => {
     clearInterval(this.timerId)
     this.setState({isTimeRunning: false})
   }
 
-  resetbtn = () => {
+  resetTimer = () => {
     clearInterval(this.timerId)
     this.setState({timer: 0, isTimeRunning: false})
   }
 
   render() {
-    const {timer} = this.state
+    const {timer, isTimeRunning} = this.state
     const minutes = Math.floor(timer / 60)
     const seconds = timer % 60
     const formattedMinutes = String(minutes).padStart(2, '0')
@@ -38,28 +37,47 @@ class Stopwatch extends Component {
 
     return (
       <div className="bg-container">
-        <div>
-          <h1 className="h">Stopwatch</h1>
-          <div className="container">
-            <div className="time-img">
+        <div className="stopwatch-card">
+          <h1 className="title">Stopwatch</h1>
+          <div className="timer-container">
+            <div className="timer-header">
               <img
                 src="https://assets.ccbp.in/frontend/react-js/stopwatch-timer.png"
                 alt="stopwatch"
+                className="timer-icon"
               />
-              <p>Timer</p>
+              <p className="timer-label">Timer</p>
             </div>
-            <h1>
+
+            <h1 className="time-display">
               {formattedMinutes}:{formattedSeconds}
             </h1>
-            <div>
-              <button className="green" type="button" onClick={this.startbtn}>
-                start
+            <p className="status-text">
+              {isTimeRunning ? 'Running...' : 'Stopped'}
+            </p>
+
+            <div className="buttons">
+              <button
+                className="btn green"
+                type="button"
+                onClick={this.startTimer}
+                disabled={isTimeRunning}
+              >
+                Start
               </button>
-              <button className="red" type="button" onClick={this.stopbtn}>
+              <button
+                className="btn red"
+                type="button"
+                onClick={this.stopTimer}
+              >
                 Stop
               </button>
-              <button className="yellow" type="button" onClick={this.resetbtn}>
-                reset
+              <button
+                className="btn yellow"
+                type="button"
+                onClick={this.resetTimer}
+              >
+                Reset
               </button>
             </div>
           </div>
